@@ -1,0 +1,34 @@
+<div class="table">
+  <div class="d-table-cell">
+    <div class="authBlock">
+      <h3>Bejelentkezés</h3>
+      <div class="formGroup">
+        <input type="text" class="formControl" placeholder="Email" #userName required>
+      </div>
+      <div class="formGroup">
+        <input type="password" class="formControl" placeholder="Jelszó" #userPassword required>
+      </div>
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input type="button" class="btn btn-primary mt-2" value="Bejelentkezés"
+               (click)="authService.signIn(userName.value, userPassword.value)">
+      </div>
+      <div class="formGroup">
+        <span class="or"><span class="orInner">Vagy</span></span>
+      </div>
+      <!-- Calling GoogleAuth Api from AuthService -->
+      <div class="formGroup">
+        <button type="button" class="btn btn-primary" (click)="authService.googleAuth()">
+          <i class="fab fa-google-plus-g"></i>
+          Jelentkezz be Google-fiókoddal!
+        </button>
+      </div>
+      <div class="forgotPassword">
+        <span routerLink="/forgot-password">Elfelejtetted a jelszavad?</span>
+      </div>
+    </div>
+    <div class="redirectToLogin">
+      <span>Még nem regisztráltál?<span class="redirect" routerLink="/register"> Itt megteheted!</span></span>
+    </div>
+  </div>
+</div>
