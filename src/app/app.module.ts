@@ -17,6 +17,8 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthService } from './shared/services/auth.service';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { AuthService } from './shared/services/auth.service';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FontAwesomeModule,
+    MatIconModule,
     AppBootstrapModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
