@@ -1,0 +1,27 @@
+$marginLeft: 10%;
+$primary: #0d6efd;
+
+.center {
+  margin: auto;
+  width: 50%;
+}
+
+.text {
+  text-align: center;
+}
+
+.button {
+  width: 80%;
+  margin-left: $marginLeft;
+}
+
+.buttonRegister {
+  border: 0;
+  background-color: white;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

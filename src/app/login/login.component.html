@@ -1,41 +1,37 @@
 <div class="center">
-  <div>
-    <div>
-      <h3 class="text mb-3">Bejelentkezés</h3>
-      <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="inputEmail" placeholder="pelda@pelda.com" #email required>
-        <label for="inputEmail">Email cím</label>
-      </div>
-      <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="inputPassword" placeholder="Jelszó" #userPassword required>
-        <label for="inputPassword">Jelszó</label>
-      </div>
-      <div>
-        <button type="button" class="btn btn-primary mt-2 button icon"
-                (click)="authService.signIn(email.value, userPassword.value)">
-          Bejelentkezés
-          <mat-icon class="ms-1">login</mat-icon>
-        </button>
-      </div>
-      <div class="text my-2">Vagy</div>
-      <div>
-        <button type="button" class="btn btn-primary mb-2 button icon" (click)="authService.googleAuth()">
-          Jelentkezz be Google-fiókoddal!
-          <mat-icon class="ms-1">account_circle</mat-icon>
-        </button>
-      </div>
-      <div class="text mt-3 icon">
-        <button class="btn btn-outline-primary icon" routerLink="/forgot-password">
-          Elfelejtetted a jelszavad?
-          <mat-icon class="ms-1">lock</mat-icon>
-        </button>
-      </div>
-    </div>
-    <div class="mt-3 text registerBox icon">
-      <button class="btn btn-outline-primary icon" routerLink="/register">
-        Még nem regisztráltál? Itt megteheted?
-        <mat-icon class="ms-1">how_to_reg</mat-icon>
-      </button>
-    </div>
+  <h3 class="text mb-3">Bejelentkezés</h3>
+  <div class="form-floating mb-3">
+    <input type="email" class="form-control" id="inputEmail" placeholder="pelda@pelda.hu" #email required>
+    <label for="inputEmail">Email cím</label>
   </div>
+  <div class="form-floating mb-3">
+    <input type="password" class="form-control" id="inputPassword" placeholder="Jelszó" #userPassword required>
+    <label for="inputPassword">Jelszó</label>
+  </div>
+  <div>
+    <button type="button" class="btn btn-primary mt-2 button icon"
+            (click)="authService.signIn(email.value, userPassword.value)">
+      Bejelentkezés
+      <mat-icon class="ms-1">login</mat-icon>
+    </button>
+  </div>
+  <div class="text my-2">Vagy</div>
+  <div>
+    <button type="button" class="btn btn-primary mb-2 button icon" (click)="authService.googleAuth()">
+      Jelentkezz be Google-fiókoddal!
+      <mat-icon class="ms-1">account_circle</mat-icon>
+    </button>
+  </div>
+  <div class="text mt-3 icon">
+    <button class="btn btn-outline-primary icon" routerLink="/forgot-password">
+      Elfelejtetted a jelszavad?
+      <mat-icon class="ms-1">lock</mat-icon>
+    </button>
+  </div>
+</div>
+<div class="mt-3 text icon">
+  <button class="btn btn-outline-primary icon" routerLink="/register">
+    Még nem regisztráltál? Itt megteheted!
+    <mat-icon class="ms-1">how_to_reg</mat-icon>
+  </button>
 </div>
