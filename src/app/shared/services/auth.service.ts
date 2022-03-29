@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from './user';
 import * as auth from 'firebase/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class AuthService {
     // public db: AngularFireDatabase,
     public afAuth: AngularFireAuth,
     public router: Router,
-    public ngZone: NgZone
+    public ngZone: NgZone,
+    public loader: LoadingService
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -29,27 +31,33 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
+    this.loader.show();
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(result => {
         this.setUserData(result.user).then(() => {
           this.ngZone.run(() => {
+            this.loader.hide();
             this.router.navigate([ 'home' ]);
           });
         });
       })
       .catch(error => {
+        this.loader.hide();
         localStorage.removeItem('user');
         window.alert(error.message);
       });
   }
 
   signUp(email: string, password: string) {
+    this.loader.show();
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
         this.sendVerificationEmail();
         this.setUserData(result.user);
+        this.loader.hide();
       })
       .catch(error => {
+        this.loader.hide();
         localStorage.removeItem('user');
         window.alert(error.message);
       });

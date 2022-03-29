@@ -19,6 +19,8 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthService } from './shared/services/auth.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MatIconModule } from '@angular/material/icon';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -31,10 +33,12 @@ import { MatIconModule } from '@angular/material/icon';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     FontAwesomeModule,
     MatIconModule,
+    MatProgressSpinnerModule,
     AppBootstrapModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
