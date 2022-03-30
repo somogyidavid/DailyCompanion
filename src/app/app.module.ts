@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppBootstrapModule } from './app-bootstrap/app-bootstrap.module';
 import { HomeComponent } from './home/home.component';
 import { environment } from '../environments/environment';
@@ -23,6 +23,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { TodoComponent } from './todo/todo.component';
 import { FinanceComponent } from './finance/finance.component';
+import { MatInputModule } from '@angular/material/input';
+import { HttpClientModule } from '@angular/common/http';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MatButtonModule } from '@angular/material/button';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -38,17 +44,25 @@ import { FinanceComponent } from './finance/finance.component';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    FormsModule,
-    FontAwesomeModule,
-    MatIconModule,
-    MatProgressSpinnerModule,
+    HttpClientModule,
     AppBootstrapModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    FontAwesomeModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
+    ColorPickerModule
   ],
   providers: [ AuthService ],
   bootstrap: [ AppComponent ]

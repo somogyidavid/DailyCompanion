@@ -1,1 +1,55 @@
-<p>todo works!</p>
+<div class="container">
+  <h1 class="text">Teendőim</h1>
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Létrehozás
+  </button>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Teendő létrehozása</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Bezár"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="name" class="form-label">Teendő neve</label>
+              <input type="text" class="form-control" id="name" name="name" [(ngModel)]="toDo.name" required
+                     minlength="1" #name="ngModel" aria-describedby="titleFeedBack"
+                     [ngClass]="{'is-invalid': name.invalid && (name.dirty || name.touched)} ">
+              <div id="titleFeedBack" class="invalid-feedback" *ngIf="name.invalid && (name.dirty || name.touched)">
+                A cím megadása kötelező!
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label">Teendő leírása</label>
+              <textarea class="form-control" id="description" name="description" [(ngModel)]="toDo.description"
+                        maxlength="255" #description="ngModel" aria-describedby="descriptionFeedback" rows="5" cols="51"
+                        [ngClass]="{'is-invalid': description.invalid && (description.dirty || description.touched)} "></textarea>
+              <div id="descriptionFeedback" class="invalid-feedback"
+                   *ngIf="description.invalid && (description.dirty || description.touched)">
+                A leírás maximum 255 karakter lehet.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="deadLine" class="form-label">Időpont</label>
+              <mat-form-field class="form-control">
+                <input id="deadLine" matInput type="datetime-local" placeholder="Válassz időpontot!"
+                       [(ngModel)]="toDo.deadLine" name="deadLine">
+              </mat-form-field>
+            </div>
+            <div class="mb-3">
+              <label for="color" class="form-label">Szín</label>
+              <input id="color" class="form-control" name="color" [(colorPicker)]="toDo.color"
+                     [style.background]="toDo.color"/>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Mégsem</button>
+          <button type="button" class="btn btn-primary" (click)="onSubmit()">Létrehozás</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

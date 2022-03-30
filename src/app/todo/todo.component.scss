@@ -1,0 +1,11 @@
+.text {
+  text-align: center;
+}
+
+textarea {
+  resize: none;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 1200 !important;
+}
