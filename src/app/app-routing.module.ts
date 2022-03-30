@@ -7,6 +7,8 @@ import { HomeComponent } from './home/home.component';
 import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { LoggedInGuard } from './shared/guard/logged-in.guard';
+import { TodoComponent } from './todo/todo.component';
+import { FinanceComponent } from './finance/finance.component';
 
 const routes: Routes = [
   {
@@ -35,6 +37,16 @@ const routes: Routes = [
   {
     path: 'home',
     component: HomeComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'todos',
+    component: TodoComponent,
+    canActivate: [ AuthGuard ]
+  },
+  {
+    path: 'finance',
+    component: FinanceComponent,
     canActivate: [ AuthGuard ]
   },
   {

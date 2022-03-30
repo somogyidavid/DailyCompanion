@@ -1,1 +1,24 @@
-<h1>Welcome!</h1>
+<div class="container">
+  <h1 class="text mb-4">Üdvözöllek {{authService.getUser().displayName}}!</h1>
+  <mat-progress-spinner [mode]="'indeterminate'" *ngIf="loading">
+  </mat-progress-spinner>
+  <div class="card-container" [hidden]="loading">
+    <div class="card custom-card">
+      <img src="assets/images/todo.jpg" class="card-img-top" alt="ToDo List" (load)="onLoad()">
+      <div class="card-body">
+        <h5 class="card-title">Teendőim</h5>
+        <p class="card-text">Kövesd nyomon az általad létrehozott tennivalókat, hogy ne maradj le semmiről!</p>
+        <a routerLink="/todos" class="btn btn-primary">Megnézem a teendőim!</a>
+      </div>
+    </div>
+    <div class="card custom-card">
+      <img src="assets/images/finance.jpg" class="card-img-top" alt="Finance">
+      <div class="card-body">
+        <h5 class="card-title">Pénzügyeim</h5>
+        <p class="card-text">Jegyezd fel és állítsd be a pénzügyi szokásaid, költekezéseid, hogy nyomon tudjad követni
+          azokat, és minél többet tudj félretenni!</p>
+        <a routerLink="/finance" class="btn btn-primary">Irány a pénzügy!</a>
+      </div>
+    </div>
+  </div>
+</div>

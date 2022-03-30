@@ -1,0 +1,37 @@
+$primary: #0d6efd;
+
+.custom-card {
+  width: 40%;
+  height: 32rem;
+  margin-bottom: 4%;
+}
+
+.text {
+  text-align: center;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+}
+
+mat-progress-spinner {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: $primary;
+  stroke: $primary;
+  margin-top: 10%;
+}

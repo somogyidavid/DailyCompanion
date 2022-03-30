@@ -133,4 +133,8 @@ export class AuthService {
         this.router.navigate([ 'login' ]);
       });
   }
+
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user')!);
+  }
 }
