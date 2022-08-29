@@ -11,6 +11,7 @@ import { LoadingService } from './loading.service';
 })
 export class AuthService {
   userData: any;
+  errors: any = [];
 
   constructor(
     public afs: AngularFirestore,
@@ -20,8 +21,9 @@ export class AuthService {
     public ngZone: NgZone,
     public loader: LoadingService
   ) {
+    this.errors = [];
     this.afAuth.authState.subscribe((user) => {
-      if (user) {
+      if(user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
       } else {
@@ -31,24 +33,27 @@ export class AuthService {
   }
 
   signIn(email: string, password: string) {
+    this.errors = [];
     this.loader.show();
     return this.afAuth.signInWithEmailAndPassword(email, password)
       .then(result => {
         this.setUserData(result.user).then(() => {
           this.ngZone.run(() => {
             this.loader.hide();
-            this.router.navigate([ 'home' ]);
+            this.router.navigate(['home']);
           });
         });
       })
       .catch(error => {
         this.loader.hide();
         localStorage.removeItem('user');
-        window.alert(error.message);
+        // window.alert(error.message);
+        this.errors.push(error);
       });
   }
 
   signUp(email: string, password: string) {
+    this.errors = [];
     this.loader.show();
     return this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(result => {
@@ -67,7 +72,7 @@ export class AuthService {
     return this.afAuth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
-        this.router.navigate([ 'verify-email' ]);
+        this.router.navigate(['verify-email']);
       })
   }
 
@@ -89,8 +94,8 @@ export class AuthService {
   googleAuth() {
     return this.authLogin(new auth.GoogleAuthProvider())
       .then((res: any) => {
-        if (res) {
-          this.router.navigate([ 'home' ]);
+        if(res) {
+          this.router.navigate(['home']);
         }
       });
   }
@@ -100,7 +105,7 @@ export class AuthService {
       .signInWithPopup(provider)
       .then(result => {
         this.ngZone.run(() => {
-          this.router.navigate([ 'home' ]);
+          this.router.navigate(['home']);
         });
         this.setUserData(result.user);
       }).catch(error => {
@@ -109,7 +114,7 @@ export class AuthService {
   }
 
   setUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${ user.uid }`);
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     // const userRef: AngularFireObject<any> = this.db.object(`users`);
 
     const userData: User = {
@@ -130,7 +135,7 @@ export class AuthService {
     return this.afAuth.signOut()
       .then(() => {
         localStorage.removeItem('user');
-        this.router.navigate([ 'login' ]);
+        this.router.navigate(['login']);
       });
   }
 
